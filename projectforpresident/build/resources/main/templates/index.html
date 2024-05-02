@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>순천향대학교 포털</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .login-btn, .join-btn, .create-post-btn {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-right">
+        <a th:href="@{/signup}" class="join-btn">회원가입</a>
+        <a th:href="@{/login}" class="login-btn">통합로그인</a>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <form action="/redirect-to-sch" method="get">
+            <button type="submit">순천향대학교</button>
+        </form>
+
+        <form action="/redirect-to-portal" method="get">
+            <button type="submit">순천향대학교 포털</button>
+        </form>
+
+        <form action="/redirect-to-study" method="get">
+            <button type="submit">교육혁신원</button>
+        </form>
+
+        <form action="/redirect-to-zoom" method="get">
+            <button type="submit">Zoom 이용안내</button>
+        </form>
+
+        <form action="/redirect-to-lms" method="get">
+            <button type="submit">lms 이용안내</button>
+        </form>
+
+        <form action="/redirect-to-contents" method="get">
+            <button type="submit">콘텐츠 저작 도구</button>
+        </form>
+    </ul>
+</nav>
+
+<section class="notice-board">
+    <a th:href="@{/posts/create}" class="create-post-btn">공지사항 작성</a>
+    <a th:href="@{/posts}">공지사항 보기</a>
+</section>
+
+</body>
+</html>

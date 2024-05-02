@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시판</title>
+</head>
+<body>
+
+<h2>게시글 목록</h2>
+
+<div th:if="${!posts.empty}">
+    <ul>
+        <li th:each="post : ${posts}">
+            <p th:text="${post.title}">제목</p>
+            <p th:text="${post.content}">내용</p>
+
+            <!-- 댓글 목록 -->
+            <div th:if="${!post.comments.empty}">
+                <ul>
+                    <li th:each="comment : ${post.comments}" th:text="${comment.content}">댓글</li>
+                </ul>
+            </div>
+
+            <!-- 댓글 작성 폼 -->
+            <form th:action="@{'/comments/add/' + ${post.id}}" method="post">
+                <input type="text" name="content" placeholder="댓글을 입력하세요" required/>
+                <input type="submit" value="댓글 추가"/>
+            </form>
+
+        </li>
+    </ul>
+</div>
+
+<div th:unless="${!posts.empty}">
+    <p>게시글이 없습니다.</p>
+</div>
+
+</body>
+</html>
